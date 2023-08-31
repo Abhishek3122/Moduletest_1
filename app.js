@@ -32,10 +32,12 @@ const resultText = document.querySelector(".results__text");
 
 const playAgainBtn = document.querySelector(".play-again");
 
-const scoreNumber = document.querySelector(".score__number");
-let score = parseInt(localStorage.getItem("score")) || 0;
-let aiScore = parseInt(localStorage.getItem("aiScore")) || 0;
+const scoreNumber = document.querySelector(".score .score__number");
+const aiScoreNumber = document.querySelector('.aiscore .score__number');
+let score = parseInt(localStorage.getItem("score") ?? localStorage.setItem('score', 0));
+let aiScore = parseInt(localStorage.getItem("aiScore") ?? localStorage.setItem('aiScore', 0));
 scoreNumber.innerText = score;
+aiScoreNumber.innerText = aiScore;
 // Game Logic
 choiceButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -79,11 +81,11 @@ function displayWinner(results) {
     if (userWins) {
       resultText.innerText = "you win";
       resultDivs[0].classList.toggle("winner");
-      keepScore(1);
+      keepScore(1, 0);
     } else if (aiWins) {
       resultText.innerText = "you lose";
       // resultDivs[1].classList.toggle("winner");
-      // keepScore(-1);
+      keepScore(0, 1);
       resultDivs[1].classList.toggle("ai-winner"); 
     } else {
       resultText.innerText = "draw";
@@ -120,19 +122,19 @@ function isWinner(results) {
   return results[0].beats === results[1].name;
 }
 
-function keepScore(point,aipoint) {
-  score += point;
-  scoreNumber.innerText = score;
-  localStorage.setItem("score", score); // Store the score in local storage
-}
-// function keepScore(userPoint, aiPoint) {
-//   score += userPoint;
-//   aiScore += aiPoint;
+// function keepScore(point,aipoint) {
+//   score += point;
 //   scoreNumber.innerText = score;
-//   aiScoreNumber.innerText = aiScore; // Update the AI's score display
-//   localStorage.setItem("userScore", score);
-//   localStorage.setItem("aiScore", aiScore);
+//   localStorage.setItem("score", score); // Store the score in local storage
 // }
+function keepScore(userPoint, aiPoint) {
+  score += userPoint;
+  aiScore += aiPoint;
+  scoreNumber.innerText = score;
+  aiScoreNumber.innerText = aiScore; // Update the AI's score display
+  localStorage.setItem("score", score);
+  localStorage.setItem("aiScore", aiScore);
+}
 
 
 
