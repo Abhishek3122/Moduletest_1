@@ -9,12 +9,12 @@
   --outline: hsl(217, 16%, 45%);
   --bg-grad-1: #8cc461;
   --bg-grad-2: #8cc461;
-  --scissors-1: hsl(39, 89%, 49%);
-  --scissors-2: hsl(40, 84%, 53%);
+  --scissors-1:#BD00FF;
+  --scissors-2: #BD00FF;
   --paper-1: hsl(230, 89%, 62%);
   --paper-2: hsl(230, 89%, 65%);
-  --rock-1: hsl(349, 71%, 52%);
-  --rock-2: hsl(349, 70%, 56%);
+  --rock-1: #FFA943;
+  --rock-2: #FFA943;
   --shadow-light: white;
   --shadow-med: #0000004d;
 }
@@ -269,7 +269,7 @@ body {
   font-size: 1.3rem;
   letter-spacing: 0.1em;
   margin-left: 480px;
-margin-top: 10px;
+margin-top: -60px;
   cursor: pointer;}
 .play-again:focus {
   border: 2px solid var(--outline);
@@ -413,12 +413,23 @@ margin-left: 900px;
 }
 .hurray{
   position: absolute;
-  top: 20px;
+  top: 0px;
   left: 350px;
   z-index: 2;
 }
 .won{
   text-align: center;
-  margin-top: 400px;
-  margin-left: 50px;
+  margin-top: 360px;
+  margin-left: 375px;
+  width: 464px;
+height: 86px;
+
+
+}
+.match{
+  margin-top: -10px;
+  text-align: center;
+  margin-left: 375px;
+  width: 464px;
+height: 86px;
 }

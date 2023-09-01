@@ -82,18 +82,42 @@ function displayWinner(results) {
       resultText.innerText = "you win";
       resultDivs[0].classList.toggle("winner");
       keepScore(1, 0);
+      document.querySelector('.next').classList.remove('hidden');
     } else if (aiWins) {
       resultText.innerText = "you lose";
       // resultDivs[1].classList.toggle("winner");
       keepScore(0, 1);
-      resultDivs[1].classList.toggle("ai-winner"); 
+      resultDivs[1].classList.toggle("ai-winner");
+      document.querySelector(".next").classList.add("hidden");
     } else {
       resultText.innerText = "draw";
+      document.querySelector(".next").classList.add("hidden");
     }
     resultWinner.classList.toggle("hidden");
     resultsDiv.classList.toggle("show-winner");
   }, 1000);
 }
+// function displayWinner(results) {
+//   setTimeout(() => {
+//     const userWins = isWinner(results);
+//     const aiWins = isWinner(results.reverse());
+
+//     if (userWins) {
+//       resultText.innerText = "you win";
+//       resultDivs[0].classList.toggle("winner");
+//       keepScore(1, 0);
+//     } else if (aiWins) {
+//       resultText.innerText = "you lose";
+//       // resultDivs[1].classList.toggle("winner");
+//       keepScore(0, 1);
+//       resultDivs[1].classList.toggle("ai-winner"); 
+//     } else {
+//       resultText.innerText = "draw";
+//     }
+//     resultWinner.classList.toggle("hidden");
+//     resultsDiv.classList.toggle("show-winner");
+//   }, 1000);
+// }
 // function displayWinner(results) {
 //   setTimeout(() => {
 //     const userWins = isWinner(results);
